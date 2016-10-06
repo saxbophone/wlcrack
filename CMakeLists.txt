@@ -60,9 +60,9 @@ if(CMAKE_BUILD_TYPE STREQUAL "Debug" OR CMAKE_BUILD_TYPE STREQUAL "")
 endif()
 
 # C Source files
-file(GLOB LIB_WLCRACK_SOURCES "src/*.c")
+file(GLOB LIB_WLCRACK_SOURCES "wlcrack/*.c")
 # C Header files
-file(GLOB LIB_WLCRACK_HEADERS "include/*.h")
+file(GLOB LIB_WLCRACK_HEADERS "wlcrack/*.h")
 
 # Test Suite Harness Source Files
 file(GLOB TEST_HARNESS_SOURCES "unit_test_harness/*.c")
@@ -104,7 +104,7 @@ install(
 )
 
 # install library header files
-install(DIRECTORY "include" DESTINATION include/wlcrack)
+install(FILES ${LIB_WLCRACK_HEADERS} DESTINATION include/wlcrack)
 
 # install executables
 install(PROGRAMS wlcc DESTINATION bin)
