@@ -4,8 +4,8 @@ Solves Word Ladder Puzzles by Brute-force
 ## About Word Ladders
 The Word Ladder is a word game and was created by Lewis Carroll in 1877. It is defined like so:
 
-  Given the first and last words of a chain of 5 4-letter words, fill in the missing 3 words.
-  For any two adjacent words, there must be a difference of only one letter.
+    Given the first and last words of a chain of 5 4-letter words, fill in the missing 3 words.
+    For any two adjacent words, there must be a difference of only one letter.
 
 ### Example
 **BARK -> BARE -> BANE -> LANE -> LAND**
