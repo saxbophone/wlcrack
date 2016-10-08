@@ -27,12 +27,51 @@
 extern "C"{
 #endif
 
-// dummy test case
-test_result_t dummy_test_case() {
+// test that c strings of length 4 can be converted to wlcrack_word_t structs
+test_result_t test_c_string_to_wlcrack_word_t() {
     // initialise test result
     test_result_t test = TEST;
     // set result to success for now, until proven otherwise by checks
     test.result = TEST_SUCCESS;
+    // create c string to convert
+    c_string_t input[4] = "CASE";
+    // create output struct
+    wlcrack_word_t output;
+
+    // convert
+    c_string_to_wlcrack_word_t(input, &output);
+
+    // check output characters
+    for(uint8_t i = 0; i < 4; i++) {
+        if(output.characters[i] != input[i]) {
+            test.result = TEST_FAIL;
+            break;
+        }
+    }
+    return test;
+}
+
+// test that wlcrack_word_t structs can be converted to c strings of length 4
+test_result_t test_wlcrack_word_t_to_c_string() {
+    // initialise test result
+    test_result_t test = TEST;
+    // set result to success for now, until proven otherwise by checks
+    test.result = TEST_SUCCESS;
+    // create input struct to convert
+    wlcrack_word_t input = { .characters = "JOIN", };
+    // create output c string
+    c_string_t output[4];
+
+    // convert
+    wlcrack_word_t_to_c_string(input, output);
+
+    // check output string
+    for(uint8_t i = 0; i < 4; i++) {
+        if(output[i] != input.characters[i]) {
+            test.result = TEST_FAIL;
+            break;
+        }
+    }
     return test;
 }
 
@@ -40,7 +79,8 @@ int main() {
     // initialise test suite
     test_suite_t suite = init_test_suite();
     // add test cases
-    add_test_case(dummy_test_case, &suite);
+    add_test_case(test_c_string_to_wlcrack_word_t, &suite);
+    add_test_case(test_wlcrack_word_t_to_c_string, &suite);
     // run test suite
     run_test_suite(&suite);
     // return test suite status
