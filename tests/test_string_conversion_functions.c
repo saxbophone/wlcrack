@@ -1,7 +1,8 @@
 /*
  * This source file forms part of wlcrack, which solves Word Ladder puzzles.
- * This source file is the main entry point for the command line program
- * wlcc, which can be used to solve given word ladder puzzles.
+ * This source file provides a unit test for the public functions provided by
+ * the wlcrack library for converting to/from c strings and the internal struct
+ * type used by the library.
  *
  * Copyright (C) 2016, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
  *
@@ -18,15 +19,3 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include "wlcrack/wlcrack.h"
-
-
-#ifdef __cplusplus
-extern "C"{
-#endif
-
-int main() {}
-
-#ifdef __cplusplus
-} // extern "C"
-#endif

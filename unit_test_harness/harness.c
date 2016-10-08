@@ -1,6 +1,7 @@
 /*
  * This source file forms part of wlcrack, which solves Word Ladder puzzles.
  * This compilation unit provides a simple test harness for the unit tests.
+ *
  * Copyright (C) 2016, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
  *
  * This program is free software: you can redistribute it and/or modify
