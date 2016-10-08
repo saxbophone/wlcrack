@@ -19,3 +19,34 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "../wlcrack/wlcrack.h"
+#include "../unit_test_harness/harness.h"
+
+
+#ifdef __cplusplus
+extern "C"{
+#endif
+
+// dummy test case
+test_result_t dummy_test_case() {
+    // initialise test result
+    test_result_t test = TEST;
+    // set result to success for now, until proven otherwise by checks
+    test.result = TEST_SUCCESS;
+    return test;
+}
+
+int main() {
+    // initialise test suite
+    test_suite_t suite = init_test_suite();
+    // add test cases
+    add_test_case(dummy_test_case, &suite);
+    // run test suite
+    run_test_suite(&suite);
+    // return test suite status
+    return suite.result ? 0 : 1;
+}
+
+#ifdef __cplusplus
+} // extern "C"
+#endif
