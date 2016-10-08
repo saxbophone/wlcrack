@@ -16,7 +16,7 @@
  * You should have received a copy of the GNU Affero General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-// Stdlib includes go here
+#include <stdint.h>
 
 #include "wlcrack.h"
 
@@ -31,6 +31,40 @@ const version_t VERSION = {
     .minor = WLCRACK_VERSION_MINOR,
     .patch = WLCRACK_VERSION_PATCH,
 };
+
+// converts a c string of length 4 to a wlcrack_word_t
+void c_string_to_wlcrack_word_t(c_string_t in[4], wlcrack_word_t* out) {
+    // copy characters across
+    for(uint8_t i = 0; i < 4; i++) {
+        out->characters[i] = in[i];
+    }
+}
+
+// converts a wlcrack_word_t to a c string of length 4
+void wlcrack_word_t_to_c_string(wlcrack_word_t in, c_string_t* out) {
+    // copy characters across
+    for(uint8_t i = 0; i < 4; i++) {
+        out[i] = in.characters[i];
+    }
+}
+
+/*
+ * given two c strings of length 4 (which are the start and end words), find any
+ * and all solutions for the word ladder and store these in a given
+ * wlcrack_solutions_t struct
+ * returns true if no errors or false if errors were encountered
+ */
+bool solve_word_ladder(
+    c_string_t first_str[4], c_string_t last_str[4], wlcrack_solutions_t * results
+) {
+    // create word structs from strings
+    wlcrack_word_t first, last;
+    c_string_to_wlcrack_word_t(first_str, &first);
+    c_string_to_wlcrack_word_t(last_str, &last);
+    // NOTE: Dummy implementation from here on...
+    results->count = 0;
+    return true;
+}
 
 #ifdef __cplusplus
 } // extern "C"

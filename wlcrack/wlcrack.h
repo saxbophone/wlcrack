@@ -54,6 +54,9 @@ typedef struct wlcrack_solutions_t {
     wlcrack_ladder_t* solutions; // dynamic array of word ladder structs
 } wlcrack_solutions_t;
 
+// library version variable
+extern const version_t VERSION;
+
 // converts a c string of length 4 to a wlcrack_word_t
 void c_string_to_wlcrack_word_t(c_string_t in[4], wlcrack_word_t* out);
 
@@ -67,11 +70,8 @@ void wlcrack_word_t_to_c_string(wlcrack_word_t in, c_string_t* out);
  * returns true if no errors or false if errors were encountered
  */
 bool solve_word_ladder(
-    c_string_t first, c_string_t last, wlcrack_solutions_t * results
+    c_string_t first_str[4], c_string_t last_str[4], wlcrack_solutions_t * results
 );
-
-// library version variable
-extern const version_t VERSION;
 
 #ifdef __cplusplus
 } // extern "C"
