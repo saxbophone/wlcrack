@@ -1,4 +1,5 @@
 # This source file forms part of wlcrack, which solves Word Ladder puzzles.
+#
 # Copyright (C) 2016, Joshua Saxby joshua.a.saxby+TNOPLuc8vM==@gmail.com
 #
 # This program is free software: you can redistribute it and/or modify
