@@ -49,6 +49,12 @@ typedef struct wlcrack_ladder_t {
     wlcrack_word_t words[5];
 } wlcrack_ladder_t;
 
+// struct type for storing a 'word list' (list of accepted words)
+typedef struct wlcrack_word_list_t {
+    size_t count; // number of words in the world list
+    wlcrack_word_t*  words; // dynamic array of words in the word list
+} wlcrack_word_list_t;
+
 // struct for storing zero or more solutions for a given word ladder puzzle
 typedef struct wlcrack_solutions_t {
     size_t count; // number of solutions found
@@ -65,13 +71,15 @@ void c_string_to_wlcrack_word_t(c_string_t in[4], wlcrack_word_t* out);
 void wlcrack_word_t_to_c_string(wlcrack_word_t in, c_string_t* out);
 
 /*
- * given two c strings of length 4 (which are the start and end words), find any
- * and all solutions for the word ladder and store these in a given
+ * given two c strings of length 4 (which are the start and end words) and a
+ * a list of all the acceptable words (e.g. all English 4-letter words), find
+ * any and all solutions for the word ladder and store these in a given
  * wlcrack_solutions_t struct
  * returns true if no errors or false if errors were encountered
  */
 bool solve_word_ladder(
-    c_string_t first_str[4], c_string_t last_str[4], wlcrack_solutions_t * results
+    c_string_t first_str[4], c_string_t last_str[4],
+    wlcrack_word_list_t word_list, wlcrack_solutions_t * results
 );
 
 #ifdef __cplusplus
