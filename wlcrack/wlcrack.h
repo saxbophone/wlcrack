@@ -19,6 +19,8 @@
 #ifndef SAXBOPHONE_WLCRACK_WLCRACK_H
 #define SAXBOPHONE_WLCRACK_WLCRACK_H
 
+#include <stdbool.h>
+#include <stddef.h>
 #include <stdint.h>
 
 
@@ -32,6 +34,41 @@ typedef struct version_t {
     uint8_t minor;
     uint8_t patch;
 } version_t;
+
+// for brevity
+typedef unsigned char c_string_t;
+
+// struct type for fixed-length char array for word
+typedef struct wlcrack_word_t {
+    c_string_t characters[4];
+} wlcrack_word_t;
+
+// struct type for one word ladder 'chain'
+typedef struct wlcrack_ladder_t {
+    wlcrack_word_t words[5];
+} wlcrack_ladder_t;
+
+// struct for storing zero or more solutions for a given word ladder puzzle
+typedef struct wlcrack_solutions_t {
+    size_t count; // number of solutions found
+    wlcrack_ladder_t* solutions; // dynamic array of word ladder structs
+} wlcrack_solutions_t;
+
+// converts a c string of length 4 to a wlcrack_word_t
+void c_string_to_wlcrack_word_t(c_string_t in[4], wlcrack_word_t* out);
+
+// converts a wlcrack_word_t to a c string of length 4
+void wlcrack_word_t_to_c_string(wlcrack_word_t in, c_string_t* out);
+
+/*
+ * given two c strings of length 4 (which are the start and end words), find any
+ * and all solutions for the word ladder and store these in a given
+ * wlcrack_solutions_t struct
+ * returns true if no errors or false if errors were encountered
+ */
+bool solve_word_ladder(
+    c_string_t first, c_string_t last, wlcrack_solutions_t * results
+);
 
 // library version variable
 extern const version_t VERSION;
